@@ -62,6 +62,8 @@ void USER_DEBOUNCE_TMR_IRQHandler(void);
 #define USER_BTN_Pin GPIO_PIN_0
 #define USER_BTN_GPIO_Port GPIOA
 #define USER_BTN_EXTI_IRQn EXTI0_IRQn
+#define USER_LED_Pin GPIO_PIN_12
+#define USER_LED_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

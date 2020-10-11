@@ -34,15 +34,38 @@
 
 static __IO uint32_t _debounced_counter = 0;
 static uint16_t _active_debouced_pin = 0;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define GPIOD_ADDRESS  (0x40020C00) //Dia chi bat dau vung nho thuoc GPIOD
+#define BSRR_OFFSET    (0x18) // Dia chi thanh ghi Bit Set/Reset
+#define BODR_OFFSET    (0x14) //Dia chi thanh ghi luu trang thai output
+
+#define BSRR_ABS_ADDRESS   (GPIOD_ADDRESS + BSRR_OFFSET)  // Tinh dia chi vat ly thanh ghi Bit Set/ReseOutput
+#define BODR_ABS_ADDRESS   (GPIOD_ADDRESS + BODR_OFFSET)  // Tinh dia chi vat ly thanh ghi Output
+
+typedef  unsigned int  my_uint32_t;  // Dinh nghia lai kieu du lieu 32-bit interger
+
+// Tao bien con tro toi thanh ghi bsrr
+static my_uint32_t*  bsrr_reg_pointer = (uint32_t*)(BSRR_ABS_ADDRESS); // Tao bien con tro toi vung  nho thanh ghi BSRR
+static my_uint32_t*  bodr_reg_pointer = (uint32_t*)(BODR_ABS_ADDRESS); // Tao bien con tro toi vung  nho thanh ghi ODR
+
+static my_uint32_t bsrr_value = 0; // Bien luu gia tri thanh ghi BSRR
+static my_uint32_t bodr_value = 0; // Bien luu gia tri thanh ghi ODR
+
+static uint8_t led_state =  0; // Khai bao bien interger 8-bit luu trang thai LED
+
+/* Tao macro port va pin cua chan DK LED */
+#define   MY_LED_PORT  		GPIOD
+#define   MY_LED_PIN  		GPIO_PIN_12
+		
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define USER_USING_STD_LIB  0
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -59,7 +82,19 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void control_led_using_stdlib(void)
+{
+		led_state = HAL_GPIO_ReadPin(MY_LED_PORT, MY_LED_PIN);
+		HAL_GPIO_WritePin(MY_LED_PORT, MY_LED_PIN, !led_state);	
+}
 
+void control_led_using_pointer(void)
+{
+	// Doc gia tri thanh ghi output
+	bodr_value = *(bodr_reg_pointer);
+	// Xuat nguoc gia tri output
+	*(bsrr_reg_pointer) = ~bodr_value;
+}
 /* USER CODE END 0 */
 
 /**
@@ -102,6 +137,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+#if USER_USING_STD_LIB
+		control_led_using_stdlib();
+#else
+		control_led_using_pointer();
+#endif		/* USER_USING_STD_LIB */	
+		HAL_Delay(1000); // Tao tre 1s
   }
   /* USER CODE END 3 */
 }
@@ -149,7 +190,6 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
-
 
 /* USER CODE BEGIN 4 */
 void USER_DEBOUNCE_TMR_IRQHandler(void)
