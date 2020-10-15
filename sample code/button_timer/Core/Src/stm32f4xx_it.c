@@ -23,6 +23,7 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "gpio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -221,7 +222,12 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
+	control_led_using_stdlib();
+	HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+#if 0	
+  while(1) {};
 	USER_DEBOUNCE_TMR_IRQHandler();
+#endif	
   /* USER CODE END TIM2_IRQn 1 */
 }
 

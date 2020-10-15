@@ -20,13 +20,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 /* USER CODE BEGIN 0 */
-
+/* Tao macro port va pin cua chan DK LED */
+#define   MY_LED_PORT     GPIOD
+#define   MY_LED_PIN      GPIO_PIN_12
+    
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
 /* Configure GPIO                                                             */
 /*----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
+static uint8_t led_state =  0; // Khai bao bien interger 8-bit luu trang thai LED
 
 /* USER CODE END 1 */
 
@@ -64,6 +68,12 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
+void control_led_using_stdlib(void)
+{
+		led_state = HAL_GPIO_ReadPin(MY_LED_PORT, MY_LED_PIN);
+		HAL_GPIO_WritePin(MY_LED_PORT, MY_LED_PIN, !led_state);	
+}
+
 
 /* USER CODE END 2 */
 

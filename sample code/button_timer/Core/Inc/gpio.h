@@ -38,7 +38,7 @@
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void control_led_using_stdlib(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
