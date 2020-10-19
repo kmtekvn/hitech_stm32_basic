@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "tim.h"
 #include "gpio.h"
 
@@ -35,6 +36,9 @@
 static __IO uint32_t _debounced_counter = 0;
 static uint16_t _active_debouced_pin = 0;
 
+
+uint8_t _temp_raw_data = 0;
+volatile uint8_t  adc_conv_done_flag = 0; // __IO
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -122,9 +126,11 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
-	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_ADC_Start_IT(&hadc1);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,6 +140,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		static uint32_t _temp_in_votage = 0;
+		
+		
+		if (adc_conv_done_flag)
+		{
+			adc_conv_done_flag = 0;
+			_temp_in_votage = adc_convert_to_voltage(_temp_raw_data);
+		}
 		#if 0
 #if USER_USING_STD_LIB
 		control_led_using_stdlib();
@@ -181,8 +195,8 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV8;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
