@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "gpio.h"
+#include "stm32f4xx_hal_usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,6 +35,10 @@ extern volatile uint8_t  adc_conv_done_flag;
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define UART_RECV_BUF_MAX_LEN   (256)
+static char recv_string[UART_RECV_BUF_MAX_LEN]; /* Mang luu chuoi ky tu nhan duoc*/
+static uint32_t i = 0; /* Bien luu vi tri ky tu hien tai dang luu*/
+static volatile uint8_t recv_done = 0; /* Flag bao da nhan xong 1 chuoi*/
 
 /* USER CODE END PD */
 
@@ -60,6 +65,7 @@ extern volatile uint8_t  adc_conv_done_flag;
 /* External variables --------------------------------------------------------*/
 extern ADC_HandleTypeDef hadc1;
 extern TIM_HandleTypeDef htim2;
+extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -248,6 +254,38 @@ void TIM2_IRQHandler(void)
 	USER_DEBOUNCE_TMR_IRQHandler();
 #endif	
   /* USER CODE END TIM2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+		/* Step 2: doc thanh ghi DR */
+		char recv_char = 0;
+
+  /* USER CODE END USART2_IRQn 0 */
+	
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+	/* Step 1: kiem tra ngat RX */
+	if (__HAL_USART_GET_IT_SOURCE(&huart2, USART_IT_RXNE) == 1)
+	{
+		/* Step 1: doc byte nhan duoc tu thanh ghi DR*/
+		recv_char = (uint8_t)( (huart2.Instance->DR) & 0xFF );
+		recv_string[i++] = recv_char;
+		
+		/* Step 2: kiem tra tran va reset bien dem*/
+		if (i >= UART_RECV_BUF_MAX_LEN) { i = 0;}
+		
+		/* Step3: kiem tra ket thuc chuoi*/
+		if (recv_char == '\0')
+		{
+			recv_done = 1;
+		}
+	}
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
