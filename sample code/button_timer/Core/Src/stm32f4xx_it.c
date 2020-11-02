@@ -266,7 +266,6 @@ void USART2_IRQHandler(void)
 		char recv_char = 0;
 
   /* USER CODE END USART2_IRQn 0 */
-	
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
 	/* Step 1: kiem tra ngat RX */

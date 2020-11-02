@@ -59,6 +59,8 @@ void USER_DEBOUNCE_TMR_IRQHandler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SPI1_CS_Pin GPIO_PIN_3
+#define SPI1_CS_GPIO_Port GPIOE
 #define USER_BTN_Pin GPIO_PIN_0
 #define USER_BTN_GPIO_Port GPIOA
 #define USER_BTN_EXTI_IRQn EXTI0_IRQn

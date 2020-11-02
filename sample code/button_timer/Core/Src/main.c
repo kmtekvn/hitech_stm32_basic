@@ -20,12 +20,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "acc_sensor_driver.h"
 
 /* USER CODE END Includes */
 
@@ -33,8 +35,8 @@
 /* USER CODE BEGIN PTD */
 
 /* Macro ON/OFF cac testcase */
-#define TEST_UART_TX_RX
-
+//#define TEST_UART_TX_RX
+#define TEST_ACC_SPI
 
 #define DEBOUCING_TIMER_INST    htim2
 #define DEBOUCING_VALID_STATE   1
@@ -102,7 +104,7 @@ void control_led_using_pointer(void)
 	*(bsrr_reg_pointer) = ~bodr_value;
 }
 
-extern volatile uint8_t recv_done;
+//extern volatile uint8_t recv_done;
 /* USER CODE END 0 */
 
 /**
@@ -136,20 +138,22 @@ int main(void)
   MX_TIM2_Init();
   MX_ADC1_Init();
   MX_USART2_UART_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
 	HAL_ADC_Start_IT(&hadc1);
 
-#define TEST_UART_TX_RX  
-
 #ifdef TEST_UART_TX_RX
 		/* Test gui nhan 1 byte */
-		uart_send_and_receive(0xAA);
+//		uart_send_and_receive(0xAA);
 		
 		/* Test gui chuoi ky tu qua cong UART*/
 	__sendDebugMsg("adc = %d", 123);
 #endif
 
+#ifdef TEST_ACC_SPI
+  acc_sensor_init();
+#endif /* TEST_ACC_SPI */
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -161,12 +165,15 @@ int main(void)
     /* USER CODE BEGIN 3 */
 #ifdef TEST_UART_TX_RX		
 		/*Test nhan chuoi ky tu*/
-		if (recv_done == 1)
-		{
-			while(1) {};
-		}
+//		if (recv_done == 1)
+//		{
+//			while(1) {};
+//		}
 #endif  /* TEST_UART_TX_RX */
-		
+	
+#ifdef TEST_ACC_SPI
+    acc_sensor_reading();
+#endif   /* TEST_ACC_SPI */
 #if 0
 		static uint32_t _temp_in_votage = 0;
 		
