@@ -158,6 +158,15 @@ void __sendDebugToUart(const char* msg)
 		}
 }
 
+void __sendBufferToUart(const char* msg, uint32_t len)
+{
+	  /* Lap den khi nao ket thuc chuoi, va kiem tra pointer NOT NULL*/
+		while(len--)
+		{
+				__uart_putchar(*msg++);
+		}
+}
+
 void __sendDebugMsg ( const char * format, ... )
 {
   va_list args;

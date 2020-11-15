@@ -30,8 +30,6 @@
 
 /* USER CODE END Includes */
 
-extern SPI_HandleTypeDef hspi1;
-
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
@@ -40,9 +38,11 @@ void MX_SPI1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 void _spi_cs_set(void);
+void _spi_enable(void);
 void _spi_cs_reset(void);
-void _spi_write_reg(uint8_t reg, uint8_t *data, uint16_t len);
-void _spi_read_reg(uint8_t reg, uint8_t *data, uint16_t len);
+void _spi_write_reg(uint8_t reg, uint8_t data);
+uint8_t _spi_read_reg(uint8_t reg);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

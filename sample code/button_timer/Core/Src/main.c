@@ -28,6 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "acc_sensor_driver.h"
+#include "afproto_user.h"
 
 /* USER CODE END Includes */
 
@@ -35,8 +36,14 @@
 /* USER CODE BEGIN PTD */
 
 /* Macro ON/OFF cac testcase */
-//#define TEST_UART_TX_RX
+#define TEST_UART_TX_RX
 #define TEST_ACC_SPI
+
+#include <string.h>
+#define MAX_FRAME_BUFFER   (256)
+static uint32_t _gFrameLen = 0;
+static char  _gFrameBuf[MAX_FRAME_BUFFER];
+	
 
 #define DEBOUCING_TIMER_INST    htim2
 #define DEBOUCING_VALID_STATE   1
@@ -140,19 +147,21 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim2);
-	HAL_ADC_Start_IT(&hadc1);
+ // HAL_TIM_Base_Start_IT(&htim2);
+//	HAL_ADC_Start_IT(&hadc1);
 
 #ifdef TEST_UART_TX_RX
 		/* Test gui nhan 1 byte */
 //		uart_send_and_receive(0xAA);
 		
 		/* Test gui chuoi ky tu qua cong UART*/
-	__sendDebugMsg("adc = %d", 123);
+	//__sendDebugMsg("adc = %d", 123);
+//	afproto_user_run_test();
 #endif
 
 #ifdef TEST_ACC_SPI
   acc_sensor_init();
+	HAL_Delay(2000);
 #endif /* TEST_ACC_SPI */
   /* USER CODE END 2 */
 
@@ -170,9 +179,13 @@ int main(void)
 //			while(1) {};
 //		}
 #endif  /* TEST_UART_TX_RX */
-	
+
 #ifdef TEST_ACC_SPI
     acc_sensor_reading();
+//		memset(_gFrameBuf, 0x00, MAX_FRAME_BUFFER);
+//		_gFrameLen = acc_sensor_build_frame(_gFrameBuf);
+//		__sendBufferToUart(_gFrameBuf, _gFrameLen);
+		HAL_Delay(100);
 #endif   /* TEST_ACC_SPI */
 #if 0
 		static uint32_t _temp_in_votage = 0;

@@ -41,6 +41,7 @@ void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN Prototypes */
 void uart_send_and_receive(uint8_t send_data);
 void __sendDebugMsg ( const char * format, ... );
+void __sendBufferToUart(const char* msg, uint32_t len);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4107</DriverSelection>
+            <DriverSelection>4101</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -337,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F407xx</Define>
+              <Define>USE_HAL_DRIVER,STM32F407xx,USE_FULL_LL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../User/LIS3DSH</IncludePath>
+              <IncludePath>../Core/Inc;   ../Drivers/STM32F4xx_HAL_Driver/Inc;   ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;   ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;   ../Drivers/CMSIS/Include;   ../User/LIS3DSH;   ../User/proto</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -514,9 +514,34 @@
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_hal_spi.c</FileName>
+              <FileName>stm32f4xx_ll_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c</FilePath>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_hal_tim.c</FileName>
@@ -557,6 +582,36 @@
               <FileName>LIS3DSH.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\LIS3DSH\LIS3DSH.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Protocol</GroupName>
+          <Files>
+            <File>
+              <FileName>afproto.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\proto\afproto.c</FilePath>
+            </File>
+            <File>
+              <FileName>afproto.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\proto\afproto.h</FilePath>
+            </File>
+            <File>
+              <FileName>crc16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\proto\crc16.c</FilePath>
+            </File>
+            <File>
+              <FileName>crc16.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\proto\crc16.h</FilePath>
+            </File>
+            <File>
+              <FileName>afproto_user.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\proto\afproto_user.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -29,6 +29,17 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "stm32f4xx_ll_spi.h"
+#include "stm32f4xx_ll_bus.h"
+#include "stm32f4xx_ll_cortex.h"
+#include "stm32f4xx_ll_rcc.h"
+#include "stm32f4xx_ll_system.h"
+#include "stm32f4xx_ll_utils.h"
+#include "stm32f4xx_ll_pwr.h"
+#include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_dma.h"
+
+#include "stm32f4xx_ll_exti.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -64,8 +75,14 @@ void USER_DEBOUNCE_TMR_IRQHandler(void);
 #define USER_BTN_Pin GPIO_PIN_0
 #define USER_BTN_GPIO_Port GPIOA
 #define USER_BTN_EXTI_IRQn EXTI0_IRQn
-#define USER_LED_Pin GPIO_PIN_12
-#define USER_LED_GPIO_Port GPIOD
+#define LED_GREEN_Pin GPIO_PIN_12
+#define LED_GREEN_GPIO_Port GPIOD
+#define LED_ORGANGE_Pin GPIO_PIN_13
+#define LED_ORGANGE_GPIO_Port GPIOD
+#define LED_RED_Pin GPIO_PIN_14
+#define LED_RED_GPIO_Port GPIOD
+#define LED_BLUE_Pin GPIO_PIN_15
+#define LED_BLUE_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
