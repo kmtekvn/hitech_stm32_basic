@@ -19,9 +19,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "adc.h"
 #include "spi.h"
-#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -95,6 +95,7 @@ static uint8_t led_state =  0; // Khai bao bien interger 8-bit luu trang thai LE
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -142,7 +143,6 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM2_Init();
   MX_ADC1_Init();
   MX_USART2_UART_Init();
   MX_SPI1_Init();
@@ -165,6 +165,13 @@ int main(void)
 #endif /* TEST_ACC_SPI */
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
+  MX_FREERTOS_Init();
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
    while (1)
@@ -258,7 +265,7 @@ void SystemClock_Config(void)
 void USER_DEBOUNCE_TMR_IRQHandler(void)
 {
 	/* Stop deboucing timer */
-	HAL_TIM_Base_Stop_IT(&DEBOUCING_TIMER_INST);
+//	HAL_TIM_Base_Stop_IT(&DEBOUCING_TIMER_INST);
 	
 	/* Check if deboucing pin is in valid state */
 	if (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, _active_debouced_pin) == DEBOUCING_VALID_STATE){
@@ -272,9 +279,30 @@ void USER_EXTI_IRQHandler(uint16_t pinNo)
 	_active_debouced_pin = pinNo;
 	
 	/* Start debounce timer */
-	HAL_TIM_Base_Start_IT(&DEBOUCING_TIMER_INST);
+//	HAL_TIM_Base_Start_IT(&DEBOUCING_TIMER_INST);
 }
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

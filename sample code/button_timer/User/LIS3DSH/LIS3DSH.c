@@ -36,6 +36,7 @@ void LIS3DSH_init(Lis3dsh *lis3dsh)
 /* Dang ky ham low level driver */
 void LIST3DSH_register_ll_function(void)
 {
+//	SPI_Read_Reg(0);
 	SPI_Read_Reg = _spi_read_reg;
 	SPI_Write_Reg = _spi_write_reg;
 	SPI_CS_Reset = _spi_cs_reset;
