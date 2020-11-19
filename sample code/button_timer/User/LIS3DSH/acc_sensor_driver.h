@@ -6,8 +6,9 @@
 
 void acc_sensor_init(void);
 void acc_sensor_reading(void);
-uint32_t acc_sensor_build_frame(char* out_buf);
+uint32_t acc_sensor_build_frame(Lis3dsh *acc_data, char* out_buf);
 void __acc_sensor_led_indicator(Lis3dsh *acc_data);
+void __acc_send_dataframe(Lis3dsh *acc_data);
 Lis3dsh* acc_get_data_pointer(void);
 
 #endif /* ACC_SENSOR_H_ */

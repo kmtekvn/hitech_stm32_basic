@@ -150,6 +150,7 @@ void StartDefaultTask(void *argument)
   {
 		acc_sensor_reading();
 		__acc_queue_send(acc_get_data_pointer());
+
     osDelay(10);
   }
   /* USER CODE END StartDefaultTask */
@@ -166,6 +167,7 @@ void StartMyTask(void *argument)
   {
 		__acc_fetch_from_queue(&_fetch_data);
 		__acc_sensor_led_indicator(&_fetch_data);
+		__acc_send_dataframe(&_fetch_data);
     osDelay(10);
   }
   /* USER CODE END StartDefaultTask */

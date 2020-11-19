@@ -39,10 +39,7 @@
 #define TEST_UART_TX_RX
 #define TEST_ACC_SPI
 
-#include <string.h>
-#define MAX_FRAME_BUFFER   (256)
-static uint32_t _gFrameLen = 0;
-static char  _gFrameBuf[MAX_FRAME_BUFFER];
+
 	
 
 #define DEBOUCING_TIMER_INST    htim2
