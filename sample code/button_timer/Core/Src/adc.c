@@ -41,7 +41,7 @@ void MX_ADC1_Init(void)
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc1.Init.DataAlign = ADC_DATAALIGN_LEFT;
+  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 1;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
@@ -73,7 +73,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     __HAL_RCC_ADC1_CLK_ENABLE();
 
     /* ADC1 interrupt Init */
-    HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(ADC_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(ADC_IRQn);
   /* USER CODE BEGIN ADC1_MspInit 1 */
 
@@ -101,15 +101,46 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 }
 
 /* USER CODE BEGIN 1 */
-#define ADC_VOLT_CONV_RATIO    (8.0)
+
+
+
+#define ADC_VOLT_CONV_RATIO    (16.0)
 #define ADC_UNIT_RATIO         (10000UL) // UL: unsigned long - 32-bit
 
-uint32_t adc_convert_to_voltage(uint32_t raw_data)
-{
-	 uint32_t raw_conv_data = (uint32_t)( ((float)raw_data/(float)ADC_VOLT_CONV_RATIO) );
+#define ADC_QUEUE_LEN          (128)
+#define ADC_QUEUE_ITEM_SIZE    sizeof(uint32_t)
 	
-		return (  raw_conv_data * ADC_UNIT_RATIO );
+QueueHandle_t  xTempADCQueue = NULL;
+
+float __adc_convert_to_voltage(uint32_t raw_data)
+{
+	 return ( (float)( ((float)raw_data/(float)ADC_VOLT_CONV_RATIO)) );
 }
+
+float adc_convert_to_temperature(uint32_t adc_in)
+{
+	//Temperature (in °C) = {(VSENSE – V25) / Avg_Slope} + 25
+	uint32_t vsense = __adc_convert_to_voltage(adc_in);
+	#define ADC_V_CALIB_AT_25   (0.76)
+	#define ADC_AVG_SLOPE       (0.25)
+	#define ADC_DEFAULT_OFFSET   (25)
+	
+	return (( vsense - ADC_V_CALIB_AT_25)/ADC_AVG_SLOPE) + ADC_DEFAULT_OFFSET;
+}
+
+void adc_queue_init(void)
+{
+		xTempADCQueue = xQueueCreate(ADC_QUEUE_LEN, ADC_QUEUE_ITEM_SIZE);
+}
+
+
+
+QueueHandle_t adc_queue_get_handle(void)
+{
+	return xTempADCQueue;
+}
+
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

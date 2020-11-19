@@ -144,8 +144,8 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
- // HAL_TIM_Base_Start_IT(&htim2);
-//	HAL_ADC_Start_IT(&hadc1);
+//  HAL_TIM_Base_Start_IT(&htim2);
+	
 
 #ifdef TEST_UART_TX_RX
 		/* Test gui nhan 1 byte */

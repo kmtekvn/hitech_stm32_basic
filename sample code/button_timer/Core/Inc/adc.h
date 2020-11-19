@@ -27,7 +27,8 @@
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "FreeRTOS.h"
+#include "queue.h"
 /* USER CODE END Includes */
 
 extern ADC_HandleTypeDef hadc1;
@@ -40,6 +41,10 @@ void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 uint32_t adc_convert_to_voltage(uint32_t raw_data);
+void adc_send_to_queue(uint32_t adc_val);
+float adc_convert_to_temperature(uint32_t adc_in);
+QueueHandle_t adc_queue_get_handle(void);
+void adc_queue_init(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

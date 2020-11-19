@@ -25,16 +25,19 @@
 /* USER CODE BEGIN Includes */
 #include "gpio.h"
 #include "stm32f4xx_hal_usart.h"
+#include "adc.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-extern uint8_t _temp_raw_data;
-extern volatile uint8_t  adc_conv_done_flag;
+
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+extern QueueHandle_t  xTempADCQueue;
+	
 #define UART_RECV_BUF_MAX_LEN   (256)
 static char recv_string[UART_RECV_BUF_MAX_LEN]; /* Mang luu chuoi ky tu nhan duoc*/
 static uint32_t i = 0; /* Bien luu vi tri ky tu hien tai dang luu*/
@@ -187,14 +190,15 @@ void EXTI0_IRQHandler(void)
 void ADC_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC_IRQn 0 */
-
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	uint32_t raw_adc = 0;
   /* USER CODE END ADC_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
   /* USER CODE BEGIN ADC_IRQn 1 */
 	// Read register value
-	
-	_temp_raw_data = HAL_ADC_GetValue(&hadc1);
-	adc_conv_done_flag = 1;
+	raw_adc = HAL_ADC_GetValue(&hadc1);
+	xQueueSendFromISR( xTempADCQueue, (void*)&raw_adc, &xHigherPriorityTaskWoken );
+	HAL_ADC_Start_IT(&hadc1) ;
   /* USER CODE END ADC_IRQn 1 */
 }
 

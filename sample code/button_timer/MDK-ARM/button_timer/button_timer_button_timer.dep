@@ -1,7 +1,7 @@
 Dependencies for Project 'button_timer', Target 'button_timer': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
 F (startup_stm32f407xx.s)(0x5FB121BE)(--cpu Cortex-M4.fp.sp -g --apcs=interwork --pd "__MICROLIB SETA 1" -I ..\Core\Inc-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 530" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f407xx.lst --xref -o button_timer\startup_stm32f407xx.o --depend button_timer\startup_stm32f407xx.d)
-F (../Core/Src/main.c)(0x5FB5E4AE)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\main.o --omf_browse button_timer\main.crf --depend button_timer\main.d)
+F (../Core/Src/main.c)(0x5FB5ECA1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\main.o --omf_browse button_timer\main.crf --depend button_timer\main.d)
 I (../Core/Inc/main.h)(0x5FB121B3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5F81ABA2)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x5FB121B2)
@@ -56,7 +56,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5F81AB47
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5F81AB47)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5F81AB47)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h)(0x5F81AB47)
-I (../Core/Inc/adc.h)(0x5FB121B0)
+I (../Core/Inc/adc.h)(0x5FB5EC92)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5F81AB47)
 I (../Core/Inc/spi.h)(0x5FB121B0)
 I (../Core/Inc/usart.h)(0x5FB121B1)
 I (../Core/Inc/gpio.h)(0x5FB121AD)
@@ -108,7 +109,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h)(0x5F81ABA3)
-F (../Core/Src/freertos.c)(0x5FB5E4C4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\freertos.o --omf_browse button_timer\freertos.crf --depend button_timer\freertos.d)
+F (../Core/Src/freertos.c)(0x5FB5F221)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\freertos.o --omf_browse button_timer\freertos.crf --depend button_timer\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5F81AB47)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E535E6C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E535E6C)
@@ -167,8 +168,9 @@ I (../User/LIS3DSH/acc_sensor_driver.h)(0x5FB5E524)
 I (../User/LIS3DSH/LIS3DSH.h)(0x5FB1181E)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5F81AB47)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E535E6C)
-F (../Core/Src/adc.c)(0x5FB121B0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\adc.o --omf_browse button_timer\adc.crf --depend button_timer\adc.d)
-I (../Core/Inc/adc.h)(0x5FB121B0)
+I (../Core/Inc/adc.h)(0x5FB5EC92)
+F (../Core/Src/adc.c)(0x5FB5F44E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\adc.o --omf_browse button_timer\adc.crf --depend button_timer\adc.d)
+I (../Core/Inc/adc.h)(0x5FB5EC92)
 I (../Core/Inc/main.h)(0x5FB121B3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5F81ABA2)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x5FB121B2)
@@ -212,6 +214,16 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h)(0x5F81ABA3)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5F81AB47)
+I (../Core/Inc/FreeRTOSConfig.h)(0x5FB121B0)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5F81AB47)
 F (../Core/Src/spi.c)(0x5FB121B0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\spi.o --omf_browse button_timer\spi.crf --depend button_timer\spi.d)
 I (../Core/Inc/spi.h)(0x5FB121B0)
 I (../Core/Inc/main.h)(0x5FB121B3)
@@ -305,7 +317,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h)(0x5F81ABA3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x5F81ABA3)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E535E6C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E535E6C)
-F (../Core/Src/stm32f4xx_it.c)(0x5FB121B1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\stm32f4xx_it.o --omf_browse button_timer\stm32f4xx_it.crf --depend button_timer\stm32f4xx_it.d)
+F (../Core/Src/stm32f4xx_it.c)(0x5FB5F204)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\stm32f4xx_it.o --omf_browse button_timer\stm32f4xx_it.crf --depend button_timer\stm32f4xx_it.d)
 I (../Core/Inc/main.h)(0x5FB121B3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5F81ABA2)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x5FB121B2)
@@ -352,6 +364,17 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h)(0x5F81ABA3)
 I (../Core/Inc/stm32f4xx_it.h)(0x5FB121B1)
 I (../Core/Inc/gpio.h)(0x5FB121AD)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h)(0x5F81ABA3)
+I (../Core/Inc/adc.h)(0x5FB5EC92)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5F81AB47)
+I (../Core/Inc/FreeRTOSConfig.h)(0x5FB121B0)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5F81AB47)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5F81AB47)
 F (../Core/Src/stm32f4xx_hal_msp.c)(0x5FB121B2)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../User/LIS3DSH -I ../User/proto -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F-I.\RTE\_button_timer-IC:\Users\Lenovo\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\Lenovo\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -DUSE_FULL_LL_DRIVER-o button_timer\stm32f4xx_hal_msp.o --omf_browse button_timer\stm32f4xx_hal_msp.crf --depend button_timer\stm32f4xx_hal_msp.d)
 I (../Core/Inc/main.h)(0x5FB121B3)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5F81ABA2)

@@ -29,6 +29,7 @@
 #include "acc_sensor_driver.h"
 #include "queue.h"
 #include <string.h>
+#include "adc.h"
 
 #define ACC_SENSOR_Q_LEN       10
 #define ACC_SENSOR_Q_SIZE      (sizeof(Lis3dsh))
@@ -65,7 +66,7 @@ static  void __acc_fetch_from_queue(Lis3dsh* out_data)
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+void StartMyADCTask(void *argument);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -129,6 +130,7 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   myTaskHandle = osThreadNew(StartMyTask, NULL, &defaultTask_attributes);
+	osThreadNew(StartMyADCTask, NULL, &defaultTask_attributes);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -168,6 +170,26 @@ void StartMyTask(void *argument)
 		__acc_fetch_from_queue(&_fetch_data);
 		__acc_sensor_led_indicator(&_fetch_data);
 		__acc_send_dataframe(&_fetch_data);
+    osDelay(10);
+  }
+  /* USER CODE END StartDefaultTask */
+}
+
+
+void StartMyADCTask(void *argument)
+{
+  /* USER CODE BEGIN StartDefaultTask */
+	adc_queue_init();
+	HAL_ADC_Start_IT(&hadc1);
+  /* Infinite loop */
+	uint32_t fetch_data = 0;
+	static float cel_c = 0;
+  for(;;)
+  {
+		if (xQueueReceive (adc_queue_get_handle(), &fetch_data, portMAX_DELAY) == pdPASS)
+		{
+			cel_c = adc_convert_to_temperature(fetch_data);
+		}
     osDelay(10);
   }
   /* USER CODE END StartDefaultTask */
