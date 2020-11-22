@@ -130,7 +130,7 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   myTaskHandle = osThreadNew(StartMyTask, NULL, &defaultTask_attributes);
-	osThreadNew(StartMyADCTask, NULL, &defaultTask_attributes);
+//	osThreadNew(StartMyADCTask, NULL, &defaultTask_attributes);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -153,7 +153,7 @@ void StartDefaultTask(void *argument)
 		acc_sensor_reading();
 		__acc_queue_send(acc_get_data_pointer());
 
-    osDelay(10);
+    osDelay(50);
   }
   /* USER CODE END StartDefaultTask */
 }

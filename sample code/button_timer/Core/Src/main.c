@@ -45,6 +45,8 @@
 #define DEBOUCING_TIMER_INST    htim2
 #define DEBOUCING_VALID_STATE   1
 
+extern volatile uint8_t userBtnPressed;
+
 static __IO uint32_t _debounced_counter = 0;
 static uint16_t _active_debouced_pin = 0;
 
@@ -273,10 +275,8 @@ void USER_DEBOUNCE_TMR_IRQHandler(void)
 void USER_EXTI_IRQHandler(uint16_t pinNo)
 {
 	/* Save active GPIO Pin*/
-	_active_debouced_pin = pinNo;
-	
-	/* Start debounce timer */
-//	HAL_TIM_Base_Start_IT(&DEBOUCING_TIMER_INST);
+	//_active_debouced_pin = pinNo;
+	userBtnPressed = 1;
 }
 /* USER CODE END 4 */
 

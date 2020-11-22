@@ -12,6 +12,49 @@
 // Khai bao cau truc du lieu luu thong tin doc tu cam bien
 static Lis3dsh __cur_acc_data;
 
+volatile uint8_t userBtnPressed = 0;
+
+//Change these values if accelerometer reading are different:
+//How far the accerometer is tilted before
+//starting to move the mouse:
+const int MovementThreshold = 18;
+
+//The average zero acceleration values read
+//from the accelerometer for each axis:
+const int ZeroXValue = 0;
+const int ZeroYValue = 0;
+//const int ZeroZValue = 0;
+
+//The maximum (positive) acceleration values read
+//from the accelerometer for each axis:
+const int MaxXValue = 4096;
+const int MaxYValue = 4096;
+//const int MaxZValue = 4096;
+
+//The minimum (negative) acceleration values read
+//from the accelerometer for each axis:
+const int MinXValue = -4096;
+const int MinYValue = -4096;
+//const int MinZValue = -4096;
+
+//The sign of the mouse movement relative to the acceleration.
+//If your cursor is going in the opposite direction you think it
+//should go, change the sign for the appropriate axis.
+const int XSign = 1;
+const int YSign = 1;
+//const int ZSign = 1;
+
+//The maximum speed in each axis (x and y)
+//that the cursor should move. Set this to a higher or lower
+//number if the cursor does not move fast enough or is too fast.
+const int MaxMouseMovement = 50;  
+
+//This reduces the 'twitchiness' of the cursor by calling
+//a delay function at the end of the main loop.
+//There are better way to do this without delaying the whole
+//microcontroller, but that is left for another tutorial or project.
+const int MouseDelay = 12;
+
 #include <string.h>
 #define MAX_FRAME_BUFFER   (256)
 static uint32_t _gFrameLen = 0;
@@ -36,10 +79,14 @@ void acc_sensor_init(void)
 
 
 
-void __acc_send_dataframe(Lis3dsh *acc_data)
+void __acc_send_dataframe(Lis3dsh *acc_data) 
 {
-	memset(_gFrameBuf, 0x00, MAX_FRAME_BUFFER);
-	_gFrameLen = acc_sensor_build_frame(acc_data, _gFrameBuf);
+	MovementStruct_t movement;
+	
+	acc_sensor_process_movement(acc_data, &movement);
+	//memset(_gFrameBuf, 0x00, MAX_FRAME_BUFFER);
+	_gFrameLen = acc_sensor_build_frame(&movement, _gFrameBuf);
+	
 	__sendBufferToUart(_gFrameBuf, _gFrameLen);
 }
 
@@ -99,13 +146,53 @@ Lis3dsh* acc_get_data_pointer(void)
 	return &__cur_acc_data;
 }
 
-uint32_t acc_sensor_build_frame(Lis3dsh *acc_data, char* out_buf)
+uint32_t acc_sensor_build_frame(MovementStruct_t* mov, char* out_buf)
 {
 	uint32_t write_len = 0;
 	char  tmp_buf[128] = {0};
 	
-	sprintf(tmp_buf, "%d,%d,%d", acc_data->accX, acc_data->accY, acc_data->accZ);
+	sprintf(tmp_buf, "%d,%d,%d", mov->XMovement, mov->YMovement, mov->clicked);
 	afproto_frame_data(tmp_buf, strlen(tmp_buf), out_buf, &write_len);
 	
 	return write_len;
+}
+
+
+void acc_sensor_process_movement(Lis3dsh *acc_data, MovementStruct_t *movement)
+{
+  //Initialize values for the mouse cursor movement.
+  int16_t MouseXMovement = 0;
+  int16_t MouseYMovement = 0;
+  
+  //Calculate mouse movement
+  //If the analog X reading is ouside of the zero threshold...
+  if( MovementThreshold < abs( acc_data->accX - ZeroXValue ) )
+  {
+    //...calculate X mouse movement based on how far the X acceleration is from its zero value.
+    MouseXMovement = XSign * ( ( ( (float)( 2 * MaxMouseMovement ) / ( MaxXValue - MinXValue ) ) * ( acc_data->accX - MinXValue ) ) - MaxMouseMovement );
+    //it could use some improvement, like making it trigonometric.
+  }
+  else
+  {
+    //Within the zero threshold, the cursor does not move in the X.
+    MouseXMovement = 0;
+  }
+
+  //If the analog Y reading is ouside of the zero threshold... 
+  if( MovementThreshold < abs( acc_data->accY - ZeroYValue ) )
+  {
+    //...calculate Y mouse movement based on how far the Y acceleration is from its zero value.
+    MouseYMovement = YSign * ( ( ( (float)( 2 * MaxMouseMovement ) / ( MaxYValue - MinYValue ) ) * ( acc_data->accY - MinYValue ) ) - MaxMouseMovement );
+    //it could use some improvement, like making it trigonometric.
+  }
+  else
+  {
+    //Within the zero threshold, the cursor does not move in the Y.
+    MouseYMovement = 0;
+  }
+ 
+    movement->XMovement = MouseXMovement;
+	  movement->YMovement = MouseYMovement;
+	  movement->clicked = userBtnPressed;
+		userBtnPressed = 0;
 }

@@ -38,6 +38,7 @@
 /* USER CODE BEGIN PD */
 extern QueueHandle_t  xTempADCQueue;
 	
+
 #define UART_RECV_BUF_MAX_LEN   (256)
 static char recv_string[UART_RECV_BUF_MAX_LEN]; /* Mang luu chuoi ky tu nhan duoc*/
 static uint32_t i = 0; /* Bien luu vi tri ky tu hien tai dang luu*/
