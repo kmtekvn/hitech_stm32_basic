@@ -45,6 +45,10 @@ void adc_send_to_queue(uint32_t adc_val);
 float adc_convert_to_temperature(uint32_t adc_in);
 QueueHandle_t adc_queue_get_handle(void);
 void adc_queue_init(void);
+
+void adc_start_converting(void);
+void adc_dma_start_transfer(void);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

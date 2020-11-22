@@ -80,8 +80,6 @@ void StartMyADCTask(void *argument);
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
-osThreadId_t myTaskHandle;
-
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .priority = (osPriority_t) osPriorityNormal,
@@ -94,6 +92,7 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+void StartMyADCTask(void *argument);
 void StartMyTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -126,12 +125,12 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* creation of defaultTask */
-	__acc_queue_create();
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  
 
-  myTaskHandle = osThreadNew(StartMyTask, NULL, &defaultTask_attributes);
-//	osThreadNew(StartMyADCTask, NULL, &defaultTask_attributes);
   /* USER CODE BEGIN RTOS_THREADS */
+	//defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+	osThreadNew(StartMyADCTask, NULL, &defaultTask_attributes);
+	//osThreadNew(StartMyTask, NULL, &defaultTask_attributes);
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
@@ -180,7 +179,11 @@ void StartMyADCTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
 	adc_queue_init();
-	HAL_ADC_Start_IT(&hadc1);
+	//HAL_ADC_Start_IT(&hadc1);
+
+  adc_start_converting();
+  adc_dma_start_transfer();
+  
   /* Infinite loop */
 	uint32_t fetch_data = 0;
 	static float cel_c = 0;
