@@ -1,0 +1,36 @@
+Dependencies for Project 'basic', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6160000::V6.16::ARMCLANG
+F (..\main.c)(0x6125A0A6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-mlittle-endian -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/Device/ARM/ARMCM4/Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM4 -D_RTE_-o ./objects/main.o -MD)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include\ARMCM4.h)(0x61259A13)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603515E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armclang.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include\system_ARMCM4.h)(0x60D3F6F2)
+I (..\common.h)(0x6125A01F)
+I (..\sw_rtc.h)(0x61259DC7)
+F (..\sw_rtc.c)(0x6125A038)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-mlittle-endian -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/Device/ARM/ARMCM4/Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM4 -D_RTE_-o ./objects/sw_rtc.o -MD)
+I (..\sw_rtc.h)(0x61259DC7)
+I (..\common.h)(0x6125A01F)
+F (..\sw_rtc.h)(0x61259DC7)()
+F (RTE\Device\ARMCM4\ARMCM4_ac6.sct)(0x60D3F6F2)()
+F (RTE\Device\ARMCM4\startup_ARMCM4.c)(0x60D3F6F2)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-mlittle-endian -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/Device/ARM/ARMCM4/Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM4 -D_RTE_-o ./objects/startup_armcm4.o -MD)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include\ARMCM4.h)(0x61259A13)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603515E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armclang.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include\system_ARMCM4.h)(0x60D3F6F2)
+F (RTE\Device\ARMCM4\system_ARMCM4.c)(0x61259464)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-mlittle-endian -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.8.0/Device/ARM/ARMCM4/Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM4 -D_RTE_-o ./objects/system_armcm4.o -MD)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include\ARMCM4.h)(0x61259A13)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603515E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armclang.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x60D3F6F2)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include\system_ARMCM4.h)(0x60D3F6F2)

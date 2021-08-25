@@ -1,0 +1,11 @@
+Dependencies for Project 'basic', Target 'Target 1': (DO NOT MODIFY !)
+F (..\main.c)(0x611E6C38)(-c --cpu Cortex-M4.fp -D__EVAL --li -g -O0 --apcs=interwork -I D:\Hi-Tech\Repo_STM\workspace\basic_keilc\keilc\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\Device\ARM\ARMCM4\Include-D_RTE_-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (RTE\Device\ARMCM4\startup_ARMCM4.s)(0x50B2DA5C)(--cpu Cortex-M4.fp --li --pd "__EVAL SETA 1" -g --apcs=interwork -I D:\Hi-Tech\Repo_STM\workspace\basic_keilc\keilc\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\Device\ARM\ARMCM4\Include--list .\startup_armcm4.lst --xref -o .\startup_armcm4.o --depend .\startup_armcm4.d)
+F (RTE\Device\ARMCM4\system_ARMCM4.c)(0x50B2DA5C)(-c --cpu Cortex-M4.fp -D__EVAL --li -g -O0 --apcs=interwork -I D:\Hi-Tech\Repo_STM\workspace\basic_keilc\keilc\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\Device\ARM\ARMCM4\Include-D_RTE_-o .\system_armcm4.o --omf_browse .\system_armcm4.crf --depend .\system_armcm4.d)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\Device\ARM\ARMCM4\Include\ARMCM4.h)(0x5302B0E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include\core_cm4.h)(0x538434D6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53464854)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include\core_cmInstr.h)(0x5302B0E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include\core_cmFunc.h)(0x5302B0E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include\core_cm4_simd.h)(0x5302B0E0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\Device\ARM\ARMCM4\Include\system_ARMCM4.h)(0x50B2DA5C)

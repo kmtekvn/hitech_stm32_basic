@@ -419,12 +419,11 @@ ARM Macro Assembler    Page 7
               00000400 
               00000C00 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
-interwork --depend=.\startup_armcm4.d -o.\startup_armcm4.o -I.\RTE\_Target_1 -I
-C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\AR
-M\CMSIS\5.8.0\Device\ARM\ARMCM4\Include --predefine="__UVISION_VERSION SETA 535
-" --predefine="_RTE_ SETA 1" --predefine="ARMCM4 SETA 1" --predefine="_RTE_ SET
-A 1" --list=.\startup_armcm4.lst RTE\Device\ARMCM4\startup_ARMCM4.s
+Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\sta
+rtup_armcm4.d -o.\startup_armcm4.o -ID:\Hi-Tech\Repo_STM\workspace\basic_keilc\
+keilc\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include -IC:\Keil_v5\ARM\
+PACK\ARM\CMSIS\4.1.0\Device\ARM\ARMCM4\Include --predefine="__EVAL SETA 1" --li
+st=.\startup_armcm4.lst RTE\Device\ARMCM4\startup_ARMCM4.s
 
 
 
@@ -952,4 +951,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 3 symbols
-390 symbols in table
+388 symbols in table

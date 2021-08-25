@@ -10,8 +10,8 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM4</Device>
@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\</OutputDirectory>
+          <OutputDirectory>.\Objects\</OutputDirectory>
           <OutputName>basic</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\</ListingPath>
+          <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -316,7 +316,7 @@
             <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
-            <OneElfS>0</OneElfS>
+            <OneElfS>1</OneElfS>
             <Strict>0</Strict>
             <EnumInt>0</EnumInt>
             <PlainCh>0</PlainCh>
@@ -328,8 +328,8 @@
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>1</v6Lang>
-            <v6LangP>1</v6LangP>
+            <v6Lang>3</v6Lang>
+            <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -368,9 +368,9 @@
             <RepFail>1</RepFail>
             <useFile>0</useFile>
             <TextAddressRange>0x00000000</TextAddressRange>
-            <DataAddressRange>0x00002000</DataAddressRange>
+            <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>.\RTE\Device\ARMCM4\ARMCM4_ac6.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -386,7 +386,17 @@
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\main.c</FilePath>
+              <FilePath>..\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>sw_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sw_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>sw_rtc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\sw_rtc.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -417,27 +427,15 @@
       </component>
     </components>
     <files>
-      <file attr="config" category="sourceAsm" condition="ARMCC" name="Device\ARM\ARMCM3\Source\ARM\startup_ARMCM3.s" version="1.0.1">
-        <instance index="0" removed="1">RTE\Device\ARMCM3\startup_ARMCM3.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM3 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="sourceC" name="Device\ARM\ARMCM3\Source\system_ARMCM3.c" version="1.0.1">
-        <instance index="0" removed="1">RTE\Device\ARMCM3\system_ARMCM3.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM3 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="linkerScript" condition="ARMCC5" name="Device\ARM\ARMCM4\Source\ARM\ARMCM4_ac5.sct" version="1.0.0">
-        <instance index="0">RTE\Device\ARMCM4\ARMCM4_ac5.sct</instance>
+      <file attr="config" category="linkerScript" condition="ARMCC6" name="Device\ARM\ARMCM4\Source\ARM\ARMCM4_ac6.sct" version="0.0.0">
+        <instance index="0">RTE\Device\ARMCM4\ARMCM4_ac6.sct</instance>
         <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM4 CMSIS" isDefaultVariant="1"/>
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceC" name="Device\ARM\ARMCM4\Source\startup_ARMCM4.c" version="2.0.3">
+      <file attr="config" category="sourceC" name="Device\ARM\ARMCM4\Source\startup_ARMCM4.c" version="0.0.0">
         <instance index="0">RTE\Device\ARMCM4\startup_ARMCM4.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM4 CMSIS" isDefaultVariant="1"/>
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
@@ -445,13 +443,7 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceAsm" condition="ARMCC" name="Device\ARM\ARMCM4\Source\ARM\startup_ARMCM4.s" version="1.0.0">
-        <instance index="0" removed="1">RTE\Device\ARMCM4\startup_ARMCM4.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM4 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="sourceC" name="Device\ARM\ARMCM4\Source\system_ARMCM4.c" version="1.0.0">
+      <file attr="config" category="sourceC" name="Device\ARM\ARMCM4\Source\system_ARMCM4.c" version="0.0.0">
         <instance index="0">RTE\Device\ARMCM4\system_ARMCM4.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM4 CMSIS" isDefaultVariant="1"/>
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
@@ -459,8 +451,8 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </file>
-      <file attr="config" category="linkerScript" condition="ARMCC5" name="Device\ARM\ARMCM4\Source\ARM\ARMCM4_ac5.sct" version="1.0.0">
-        <instance index="0" removed="1">RTE\Device\ARMCM4_FP\ARMCM4_ac5.sct</instance>
+      <file attr="config" category="linkerScript" condition="ARMCC6" name="Device\ARM\ARMCM4\Source\ARM\ARMCM4_ac6.sct" version="1.0.0">
+        <instance index="0" removed="1">RTE\Device\ARMCM4_FP\ARMCM4_ac6.sct</instance>
         <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM4 CMSIS" isDefaultVariant="1"/>
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos/>
@@ -475,24 +467,6 @@
         <instance index="0" removed="1">RTE\Device\ARMCM4_FP\system_ARMCM4.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.0.3" condition="ARMCM4 CMSIS" isDefaultVariant="1"/>
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h" version="1.1.2">
-        <instance index="0" removed="1">RTE\Device\STM32F100C8\RTE_Device.h</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" condition="STM32F1xx VL MD ARMCC" name="Device\Source\ARM\startup_stm32f10x_md_vl.s" version="1.0.0">
-        <instance index="0" removed="1">RTE\Device\STM32F100C8\startup_stm32f10x_md_vl.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" name="Device\Source\system_stm32f10x.c" version="1.0.0">
-        <instance index="0" removed="1">RTE\Device\STM32F100C8\system_stm32f10x.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
         <targetInfos/>
       </file>
     </files>
