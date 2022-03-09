@@ -61,8 +61,8 @@ all: main-build
 main-build: i2c_bh1750.elf secondary-outputs
 
 # Tool invocations
-i2c_bh1750.elf: $(OBJS) $(USER_OBJS) E:\cubeide_ws\i2c_bh1750\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "i2c_bh1750.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\cubeide_ws\i2c_bh1750\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="i2c_bh1750.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+i2c_bh1750.elf: $(OBJS) $(USER_OBJS) D:\Hi-Tech\Repo_STM\hitech_stm32_basic\04.\ Slides\07.\ I2C\i2c_bh1750\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "i2c_bh1750.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Hi-Tech\Repo_STM\hitech_stm32_basic\04. Slides\07. I2C\i2c_bh1750\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="i2c_bh1750.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
